@@ -37,6 +37,7 @@ class ViewController: UIViewController {
               guard let data = data else { return }
                     print("DATA 🟣 \(data)")
                  do {
+                    // пребразование data в json
                  let json = try JSONSerialization.jsonObject(with: data, options: [])
                     print("JSON 🔆 \(json)")
                  } catch {
@@ -67,7 +68,7 @@ class ViewController: UIViewController {
             request.httpMethod = "POST"
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
+        guard let httpBody = try JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
         request.httpBody = httpBody
         
         
